@@ -16,8 +16,7 @@
             <div class="mb-3">
                 <label for="cover_image" class="form-label">cover_image</label>
                 <input type="file" class="form-control @error('cover_image') is-invalid @enderror" name="cover_image"
-                    id="cover_image" aria-describedby="cover_imagehelpId" value="{{ old('cover_image') }}"
-                    accept="image/jpg" />
+                    id="cover_image" aria-describedby="cover_imagehelpId" value="{{ old('cover_image') }}" />
                 <small id="cover_imagehelpId" class="form-text text-muted">Insert your project cover image</small>
             </div>
 
