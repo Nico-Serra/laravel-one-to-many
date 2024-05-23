@@ -6,6 +6,9 @@ use App\Models\Type;
 use App\Http\Requests\StoreTypeRequest;
 use App\Http\Requests\UpdateTypeRequest;
 use App\Http\Controllers\Controller;
+use App\Models\Project;
+use Illuminate\Support\Str;
+
 
 class TypeController extends Controller
 {
@@ -14,7 +17,9 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        $types = Type::all();
+
+        return view('admin.types.index', compact('types'));
     }
 
     /**
@@ -22,7 +27,9 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        $types = Type::all();
+
+        return view('admin.types.create', compact('types'));
     }
 
     /**
@@ -30,7 +37,19 @@ class TypeController extends Controller
      */
     public function store(StoreTypeRequest $request)
     {
-        //
+        //dd($request->all());
+
+        $val_data = $request->validated();
+
+        //dd($val_data);
+
+        $slug = Str::slug($request->name, '-');
+
+        $val_data['slug'] = $slug;
+
+        Type::create($val_data);
+
+        return to_route('admin.types.index')->with('message', 'Type created with success');
     }
 
     /**
@@ -38,7 +57,13 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        //
+        //$projects = Project::all();
+
+        $projects = Project::where('type_id', $type->id)->get();
+
+        //dd($projects);
+
+        return view('admin.types.show', compact('projects'));
     }
 
     /**
@@ -46,7 +71,8 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+
+        return view('admin.types.edit', compact('type'));
     }
 
     /**
@@ -54,7 +80,17 @@ class TypeController extends Controller
      */
     public function update(UpdateTypeRequest $request, Type $type)
     {
-        //
+        $val_data = $request->validated();
+
+        //dd($val_data);
+
+        $slug = Str::slug($request->name, '-');
+
+        $val_data['slug'] = $slug;
+
+        $type->update($val_data);
+
+        return to_route('admin.types.index')->with('message', 'Type updated with success');
     }
 
     /**
@@ -62,6 +98,8 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+
+        return back()->with('message', $type->name . ' deleted with success');
     }
 }
