@@ -24,6 +24,7 @@ class UpdateProjectRequest extends FormRequest
         return [
             'name' => 'required|min:5|max:100|unique:projects,name,' . $this->project->id,
             //'slug' => 'required|min:5|max:100',
+            'type_id' => 'nullable|exists:types,id',
             'link' => 'nullable|min:15|max:255',
             'link_code' => 'nullable|min:15|max:255',
             'cover_image' => 'nullable',

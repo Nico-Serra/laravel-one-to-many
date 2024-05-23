@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use App\Models\Type;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -29,7 +30,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -53,6 +56,10 @@ class ProjectController extends Controller
             $val_data['cover_image'] = $image_path;
         }
 
+        //dd($request['type_id']);
+
+        $val_data['type_id'] = $request['type_id'];
+
         //dd($val_data);
 
         Project::create($val_data);
@@ -75,7 +82,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $types = Type::all();
+
+        return view('admin.projects.edit', compact('project', 'types'));
     }
 
     /**
@@ -109,6 +118,10 @@ class ProjectController extends Controller
 
             //dd($image_path, $val_data);
         }
+
+        $val_data['type_id'] = $request['type_id'];
+
+        //dd($val_data);
 
         $project->update($val_data);
 
