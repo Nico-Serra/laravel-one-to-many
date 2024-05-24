@@ -58,7 +58,7 @@ class ProjectController extends Controller
 
         //dd($request['type_id']);
 
-        $val_data['type_id'] = $request['type_id'];
+        //$val_data['type_id'] = $request['type_id'];
 
         //dd($val_data);
 
@@ -119,7 +119,7 @@ class ProjectController extends Controller
             //dd($image_path, $val_data);
         }
 
-        $val_data['type_id'] = $request['type_id'];
+        //$val_data['type_id'] = $request['type_id'];
 
         //dd($val_data);
 
