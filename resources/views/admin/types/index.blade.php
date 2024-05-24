@@ -11,11 +11,11 @@
 
 
 
-        <div class="container">
+        <div class="container text-center ">
             @include('partials.message')
 
             <div class="table-responsive">
-                <table class="table table-secondary">
+                <table class="table table-secondary w-75 mx-auto">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>

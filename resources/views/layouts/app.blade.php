@@ -14,6 +14,10 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Honk&display=swap" rel="stylesheet">
+
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
@@ -27,7 +31,7 @@
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <a class="navbar-brand d-flex align-items-center text-warning " href="{{ url('/') }}">
-                        <div class="display-6 fw-bold  ">
+                        <div class="display-6 fw-bold title_font">
                             Portfolio
                         </div>
                         {{-- config('app.name', 'Laravel') --}}

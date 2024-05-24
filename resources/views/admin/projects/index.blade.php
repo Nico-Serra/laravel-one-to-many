@@ -4,9 +4,9 @@
 @section('content')
     <section class="bg-light py-3">
         <div class="container d-flex align-items-center justify-content-between py-3">
-            <h1>Projects</h1>
+            <h1 class="text-uppercase">Projects</h1>
 
-            <a href="{{ route('admin.projects.create') }}" class="btn btn-secondary  ">Add Project</a>
+            <a href="{{ route('admin.projects.create') }}" class="btn btn-dark  ">Add Project</a>
         </div>
 
 
@@ -19,13 +19,13 @@
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Cover Image</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Slug</th>
-                            <th scope="col">Site</th>
-                            <th scope="col">Code</th>
-                            <th scope="col">Project Date</th>
-                            <th scope="col">Actions</th>
+                            <th scope="col" class="text-center">Cover Image</th>
+                            <th scope="col" class="text-center">Name</th>
+                            <th scope="col" class="text-center">Slug</th>
+                            <th scope="col" class="text-center">Site</th>
+                            <th scope="col" class="text-center">Code</th>
+                            <th scope="col" class="text-center">Date</th>
+                            <th scope="col" class="text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,17 +33,20 @@
                             <tr class="">
                                 <td scope="row">{{ $project->id }}</td>
                                 @if (Str::startsWith($project->cover_image, 'https://'))
-                                    <td><img src="{{ $project->cover_image }}" alt="" width="150"></td>
-                                @else
-                                    <td><img src="{{ asset('storage/' . $project->cover_image) }}" alt=""
+                                    <td class="text-center"><img src="{{ $project->cover_image }}" alt=""
                                             width="150"></td>
+                                @else
+                                    <td class="text-center"><img src="{{ asset('storage/' . $project->cover_image) }}"
+                                            alt="" width="150"></td>
                                 @endif
-                                <td>{{ $project->name }}</td>
-                                <td>{{ $project->slug }}</td>
-                                <td><a href="{{ $project->link }}" class="btn btn-dark btn-sm ">🌍 Site</a></td>
-                                <td><a href="{{ $project->link_code }}" class="btn btn-dark btn-sm ">Code</a></td>
-                                <td>{{ $project->project_date }}</td>
-                                <td>
+                                <td class="text-center">{{ $project->name }}</td>
+                                <td class="text-center">{{ $project->slug }}</td>
+                                <td class="text-center"><a href="{{ $project->link }}" class="btn btn-dark btn-sm ">🌍
+                                        Site</a></td>
+                                <td class="text-center"><a href="{{ $project->link_code }}"
+                                        class="btn btn-dark btn-sm ">Code</a></td>
+                                <td class="text-center">{{ $project->project_date }}</td>
+                                <td class="text-center">
                                     <a href="{{ route('admin.projects.show', $project) }}"
                                         class="btn btn-dark btn-sm">👁‍🗨View</a>
                                     <a href="{{ route('admin.projects.edit', $project) }}"

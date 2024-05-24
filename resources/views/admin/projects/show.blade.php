@@ -24,9 +24,11 @@
                         <strong>Type:</strong> {{ $project->type ? $project->type->name : 'Untype' }}
                     </div>
 
-                    <h2>Actions</h2>
-                    <a href="{{ route('admin.projects.index') }}" class="btn btn-warning ">⬅ Go Back</a>
-                    <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-warning ">🖊Edit</a>
+                    <div class="py-5">
+                        {{-- <h2>Actions</h2> --}}
+                        <a href="{{ route('admin.projects.index') }}" class="btn btn-warning ">⬅ Go Back</a>
+                        <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-warning ">🖊Edit</a>
+                    </div>
                 </div>
             </div>
         </div>
